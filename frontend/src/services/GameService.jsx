@@ -1,9 +1,23 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/games";
+const BASE_URL = "http://localhost:8080/games";
 
-export const fetchGames = async () => {
-  const response = await axios.get(API_URL);
+// GET
+export const getGames = () => {
+  return axios.get(BASE_URL);
+};
 
-  return response.data;
+// CREATE
+export const createGame = (game) => {
+  return axios.post(BASE_URL, game);
+};
+
+// UPDATE
+export const updateGame = (id, game) => {
+  return axios.put(`${BASE_URL}?id=${id}`, game);
+};
+
+// DELETE
+export const deleteGame = (id) => {
+  return axios.delete(`${BASE_URL}?id=${id}`);
 };
