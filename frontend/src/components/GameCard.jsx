@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { addToWishlist, removeFromWishlist } from "../redux/wishlistSlice";
 import { deleteGame } from "../services/gameService";
+import { use, useEffect } from "react";
 
 function GameCard({ game, onEdit }) {
   const dispatch = useDispatch();
@@ -21,6 +22,7 @@ function GameCard({ game, onEdit }) {
 
   const handleDelete = async () => {
     await deleteGame(game.id);
+      window.location.reload();
   };
 
   const handleUpdate = () => {
@@ -30,6 +32,7 @@ function GameCard({ game, onEdit }) {
   const handleOpenGame = () => {
     window.open(game.freetogame_profile_url, "_blank");
   };
+
 
   return (
     <div className="bg-zinc-900 rounded-xl overflow-hidden shadow-lg">
